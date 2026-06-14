@@ -1,0 +1,22 @@
+SELECT
+    COUNT(*) AS row_count,
+    MIN(call_time) AS min_call_time,
+    MAX(call_time) AS max_call_time
+FROM transactions_v2;
+
+SELECT
+    region_code,
+    COUNT(*) AS calls_count,
+    AVG(duration_sec) AS avg_duration_sec
+FROM transactions_v2
+GROUP BY region_code
+ORDER BY calls_count DESC;
+
+SELECT
+    call_status,
+    client_response,
+    COUNT(*) AS calls_count
+FROM transactions_v2
+GROUP BY call_status, client_response
+ORDER BY calls_count DESC;
+
